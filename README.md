@@ -1,68 +1,74 @@
-# Projeto Double
+# double_adivinhar
 
 ## Descrição
 
-Este projeto é uma aplicação Python desenvolvida para realizar operações de duplicação de valores, podendo ser utilizada para fins educacionais, automação de tarefas simples ou como base para projetos mais complexos. O código foi escrito visando simplicidade e facilidade de uso.
+Este projeto utiliza Python, Selenium, BeautifulSoup e uma rede neural (Keras) para coletar dados de resultados do jogo "Double" do site Blaze, armazenar os resultados em um arquivo JSON e tentar prever o próximo valor com base nos últimos resultados utilizando aprendizado de máquina.
 
 ## Funcionalidades
 
-- Duplicação de números inteiros e/ou decimais.
-- Interface de linha de comando simples.
-- Fácil integração com outros scripts Python.
-- Código modular e de fácil manutenção.
+- Coleta automática dos resultados do jogo Double via web scraping.
+- Armazenamento dos resultados em arquivo JSON.
+- Treinamento de uma rede neural para prever o próximo valor com base nos últimos 5 resultados.
+- Atualização automática do modelo conforme mais dados são coletados.
+- Exibição de estatísticas de acerto durante a execução.
 
 ## Pré-requisitos
 
-- Python 3.7 ou superior instalado.
-- (Opcional) Ambiente virtual recomendado para isolamento de dependências.
+- Python 3.7 ou superior
+- Google Chrome instalado
+- ChromeDriver compatível com a versão do seu Chrome
+- Bibliotecas Python:
+  - selenium
+  - beautifulsoup4
+  - numpy
+  - keras
+  - tensorflow
 
 ## Instalação
 
 1. Clone este repositório:
    ```bash
    git clone https://github.com/RodrigoEmerson/double.git
-   ```
-2. Acesse o diretório do projeto:
-   ```bash
    cd double
    ```
-3. (Opcional) Crie e ative um ambiente virtual:
+2. Instale as dependências:
    ```bash
-   python -m venv venv
-   # No Windows:
-   venv\Scripts\activate
-   # No Linux/Mac:
-   source venv/bin/activate
+   pip install selenium beautifulsoup4 numpy keras tensorflow
    ```
-4. Instale as dependências (se houver um arquivo `requirements.txt`):
-   ```bash
-   pip install -r requirements.txt
-   ```
+3. Baixe o [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads) compatível com seu navegador e coloque-o no PATH do sistema ou no mesmo diretório do script.
 
 ## Como Executar
 
-Execute o script principal diretamente pelo terminal:
+Execute o script principal:
 
 ```bash
-python double.py
+python double_adivinhar.py
 ```
 
-Ou, se o arquivo principal tiver outro nome, substitua por ele.
+O script abrirá o navegador, coletará os resultados e tentará prever o próximo valor automaticamente.
 
 ## Exemplo de Uso
 
-```bash
-$ python double.py 5
-Resultado: 10
+Saída esperada no terminal:
 
-$ python double.py 3.5
-Resultado: 7.0
+```
+------------------------------------------------------------
+14
+Próximo valor possível: 2 (probabilidade: 0.08)
+Porcentagem de acertos: 60.00%
+------------------------------------------------------------
+2
+Próximo valor possível: 13 (probabilidade: 0.12)
+Porcentagem de acertos: 62.50%
+...
 ```
 
 ## Observações
 
-- Certifique-se de estar no diretório correto ao executar o script.
-- Caso queira integrar este código a outros projetos, basta importar as funções desejadas.
+- O script depende da estrutura da página do site Blaze. Mudanças no site podem exigir ajustes no código.
+- O modelo de rede neural é simples e serve como exemplo; para melhores resultados, ajuste hiperparâmetros e arquitetura.
+- O ChromeDriver deve ser compatível com a versão do seu navegador Chrome.
+- Para interromper a execução, pressione `Ctrl+C` no terminal.
 
 ## Autor
 
